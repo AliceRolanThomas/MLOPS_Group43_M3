@@ -18,5 +18,5 @@ EXPOSE 5000
 # Copy supervisord configuration
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-# Run supervisord to start both Flask and MLflow
-CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
+# Run the Flask app
+CMD ["python", "src/app.py"]

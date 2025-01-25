@@ -7,7 +7,7 @@ import os
 app = Flask(__name__)
 
 # Set the port from the environment variable or use the default (8080)
-port = int(os.environ.get("PORT", 8080))
+# port = int(os.environ.get("PORT", 8080))
 
 # Load the model and vectorizer
 model = joblib.load("model.joblib")
@@ -15,6 +15,9 @@ vectorizer = joblib.load("vectorizer.joblib")
 
 # Start an MLflow experiment
 mlflow.set_experiment('flask_model_prediction')
+@app.route('/')
+def home():
+    return "Hello, World!"
 
 @app.route("/predict", methods=["POST"])
 def predict():
@@ -38,4 +41,4 @@ def predict():
     return jsonify({"category": prediction[0]})
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=port)
+    app.run(host="0.0.0.0", port=8080)
