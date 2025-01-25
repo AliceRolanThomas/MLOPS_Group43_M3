@@ -3,8 +3,11 @@ import joblib
 import mlflow
 import mlflow.sklearn
 from datetime import datetime
-
+import os 
 app = Flask(__name__)
+
+# Set the port from the environment variable or use the default (8080)
+port = int(os.environ.get("PORT", 8080))
 
 # Load the model and vectorizer
 model = joblib.load("model.joblib")
@@ -35,4 +38,4 @@ def predict():
     return jsonify({"category": prediction[0]})
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=8080)
+    app.run(host="0.0.0.0", port=port)
