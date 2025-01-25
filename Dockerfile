@@ -19,4 +19,5 @@ EXPOSE 5000
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 # Run the Flask app
-CMD ["python", "src/app.py"]
+# CMD ["python", "src/app.py"]
+CMD ["gunicorn", "--bind", "0.0.0.0:8080", "src.app:app"]
