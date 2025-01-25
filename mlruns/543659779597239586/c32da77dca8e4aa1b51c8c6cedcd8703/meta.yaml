@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/Alice%20Rolan%20Thomas/OneDrive/Documents/GitHub/MLOPS_G43_M3/mlruns/543659779597239586/c32da77dca8e4aa1b51c8c6cedcd8703/artifacts
+end_time: 1737812086751
+entry_point_name: ''
+experiment_id: '543659779597239586'
+lifecycle_stage: active
+run_id: c32da77dca8e4aa1b51c8c6cedcd8703
+run_name: RandomForest_NewsCategoryPrediction_2025-01-25_19-04-46
+run_uuid: c32da77dca8e4aa1b51c8c6cedcd8703
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1737812086734
+status: 4
+tags: []
+user_id: Alice Rolan Thomas

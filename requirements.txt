@@ -1,0 +1,12 @@
+pandas
+scikit-learn
+numpy
+matplotlib
+joblib
+black
+flake8
+pytest
+mlflow
+mlflow-skinny
+optuna
+Flask

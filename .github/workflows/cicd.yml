@@ -1,0 +1,23 @@
+name: Group 43 CI CD Workflow
+on:
+  push:
+    branches:
+      - main
+      - M2-Process-and-Tooling-Objective
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+           python-version: '3.10'
+      - name: Install Packages
+        run: pip install --upgrade pip && pip install -r requirements.txt
+
+      - name: Train
+        run: python src/train.py
