@@ -22,15 +22,15 @@ jobs:
     - name: Log in to registry
       uses: docker/login-action@v2
       with:
-        registry: https://index.docker.io/
-        username: ${{ secrets.AzureAppService_ContainerUsername_a0f64bbb87e247c0aae2b2961cfa23ba }}
-        password: ${{ secrets.AzureAppService_ContainerPassword_8e1e83f64b3f46929e65ab7478224648 }}
+        registry: https://index.docker.io/v1/
+        username: ${{ secrets.AzureAppService_ContainerUsername_67127698959c44ec9f09292a78bc30b8 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_5e31321e8ba5455eb9a8d1ad54f5c76c }}
 
     - name: Build and push container image to registry
       uses: docker/build-push-action@v3
       with:
         push: true
-        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_a0f64bbb87e247c0aae2b2961cfa23ba }}/news-category-flask-azure:${{ github.sha }}
+        tags: index.docker.io/${{ secrets.AzureAppService_ContainerUsername_67127698959c44ec9f09292a78bc30b8 }}/news-category-model:${{ github.sha }}
         file: ./Dockerfile
 
   deploy:
@@ -47,5 +47,5 @@ jobs:
       with:
         app-name: 'mlops-group43'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_41f3df25c961484ca74429faa7a208e3 }}
-        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_a0f64bbb87e247c0aae2b2961cfa23ba }}/news-category-flask-azure:${{ github.sha }}'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_694dd26c86c04ab98aed4dc5face5dee }}
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_67127698959c44ec9f09292a78bc30b8 }}/news-category-model:${{ github.sha }}'
