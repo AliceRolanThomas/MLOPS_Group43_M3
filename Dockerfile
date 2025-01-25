@@ -4,20 +4,21 @@ FROM python:3.10-slim
 # Set the working directory
 WORKDIR /app
 
-# Copy files
+# Copy application files
 COPY . .
 
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
-RUN apt-get update && apt-get install -y supervisor
+
+# Install Supervisor
+RUN apt-get update && apt-get install -y supervisor && apt-get clean
 
 # Expose Flask (8080) and MLflow (5000) ports
 EXPOSE 8080
 EXPOSE 5000
 
-# Copy supervisord configuration
+# Copy Supervisor configuration
 COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-# Run the Flask app
-# CMD ["python", "src/app.py"]
-CMD ["gunicorn", "--bind", "0.0.0.0:8080", "src.app:app"]
+# Run Supervisor to manage Flask and MLflow
+CMD ["supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
